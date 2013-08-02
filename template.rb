@@ -4,6 +4,7 @@ run 'rm app/assets/javascripts/application.js'
 run 'rm app/assets/stylesheets/application.css'
 run 'echo "#= require jquery\n#= require_self" > app/assets/javascripts/application.js.coffee'
 run 'echo "//= require_self" > app/assets/stylesheets/application.css.scss'
+run 'touch app/assets/stylesheets/ie.css.scss'
 run 'rm -f public/*'
 run 'rm app/views/layouts/application.html.erb'
 
@@ -45,8 +46,9 @@ file 'app/views/layouts/application.html.haml', <<-LAYOUT
   = stylesheet_link_tag "application", :media => "all"
   = javascript_include_tag "modernizr"
   = csrf_meta_tags
-  :plain
-    <!--[if lt IE 8]>\#{stylesheet_link_tag "ie"}<![endif]-->
+  -# Don't forget to add modernizr.js and ie.css to config.assets.precompile in production.rb
+  -#:plain
+  -#  <!--[if lt IE 8]>\#{stylesheet_link_tag "ie"}<![endif]-->
 
 %body
   %header#encabezado
@@ -65,7 +67,7 @@ file 'app/views/layouts/application.html.haml', <<-LAYOUT
         %li
           %a{ :href => '/' }>
             Menu Element
-  #main{ :role => "main " }
+  main#main{ :role => "main " }
     = yield
 
   %footer#pie
