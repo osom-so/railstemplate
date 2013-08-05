@@ -67,7 +67,7 @@ file 'app/views/layouts/application.html.haml', <<-LAYOUT
         %li
           %a{ :href => '/' }>
             Menu Element
-  main#main{ :role => "main " }
+  %main#main{ :role => "main " }
     = yield
 
   %footer#pie
@@ -78,6 +78,7 @@ LAYOUT
 
 gem 'sass'
 gem 'osom-normalizr', :git => 'git://github.com/osom-so/normalizr.git'
+gem 'haml'
 
 gem_group :assets do
   gem 'compass-rails'
